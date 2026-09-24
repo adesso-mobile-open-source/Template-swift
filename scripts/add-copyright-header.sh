@@ -207,7 +207,7 @@ has_our_banner() {
     local base
     base="$(basename "$file")"
     leading_comment_block "$file" \
-        | grep -Eq "^//[[:space:]]+$(printf '%s' "$base" | sed 's/[.[\*^$]/\\&/g')[[:space:]]*$"
+        | grep -Eq "^//[[:space:]]+$(printf '%s' "$base" | sed 's/[][\\.^$*+?(){}|]/\\&/g')[[:space:]]*$"
 }
 
 # A file is fully compliant when it has BOTH the license and our banner.
